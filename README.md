@@ -1,2 +1,3 @@
-# withinfocus.github.io
-withinfocus.com
+# withinfocus.com
+
+Website for withinfocus.com.
