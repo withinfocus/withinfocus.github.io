@@ -9,11 +9,14 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{scss,yml,csproj,sln}]
+[*.{scss,yml,csproj}]
 indent_size = 2
 
 [package.json]
 indent_size = 2
+
+[*.sln]
+indent_style = tab
 
 [*.cs]
 dotnet_separate_import_directive_groups = false
