@@ -1,0 +1,35 @@
+$primary: #252830 !default;
+$secondary: #cfd2da !default;
+$link: #fdc000 !default;
+
+@mixin body-font {
+  font-family: 'Source Sans Pro', 'Arial', sans-serif;
+}
+
+body {
+  @include body-font;
+  padding: 5em 0 2.5em 0;
+  background-color: $primary;
+  color: $secondary;
+}
+
+a,
+a:active,
+a:hover,
+a:visited {
+  color: $link;
+}
+
+li {
+  margin-top: .25em;
+}
+
+footer {
+  margin-top: 2.5em;
+}
+
+.jumbotron {
+  background-image: url("../pcb.webp");
+  padding: 2.5em;
+  color: lighten($primary, 15%);
+}
