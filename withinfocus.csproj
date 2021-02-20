@@ -11,5 +11,6 @@
 
   <ItemGroup>
     <Folder Include="input\" />
+    <Folder Include="input\assets\" />
   </ItemGroup>
 </Project>
