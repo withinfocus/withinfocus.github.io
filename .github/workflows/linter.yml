@@ -1,12 +1,23 @@
 name: Lint
 
 on:
-  push:
-    branches-ignore: [develop]
   pull_request:
     branches: [develop]
 
+env:
+  APPLY_FIXES: all
+  APPLY_FIXES_EVENT: pull_request
+  APPLY_FIXES_MODE: commit
+
 jobs:
+  cancel_duplicates:
+    name: Dupes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
   build:
     name: Lint
     runs-on: ubuntu-latest
@@ -18,8 +29,41 @@ jobs:
           fetch-depth: 0
 
       - name: Lint
-        uses: github/super-linter@v3
+        id: ml
+        uses: nvuillam/mega-linter/flavors/dotnet@v4
         env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: develop
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Report
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lint Report
+          path: |
+            report
+            mega-linter.log
+
+      - name: Fix
+        id: cpr
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Apply lint fixes"
+          title: "Apply lint fixes"
+          labels: bot
+      - name: Output
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        run: |
+          echo "PR: ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "PR URL: ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: Prepare
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/develop' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        run: sudo chown -Rc $UID .git/
+      - name: Commit
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/develop' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
+          commit_message: "Apply lint fixes"
