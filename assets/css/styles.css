@@ -1,9 +1,7 @@
-body { font-family: 'Source Sans Pro', 'Arial', sans-serif; padding: 5em 0 2.5em 0; background-color: #252830; color: #cfd2da; }
+body { font-family: 'Source Sans Pro', 'Arial', sans-serif; background-color: #252830; color: #cfd2da; }
 
 a, a:active, a:hover, a:visited { color: #fdc000; }
 
-li { margin-top: .25em; }
+li { margin-top: .5em; }
 
-footer { margin-top: 2.5em; }
-
-.jumbotron { background-image: url("../pcb.webp"); padding: 2.5em; color: #464c5b; }
+.jumbotron { background-image: url("../pcb.webp"); color: #464c5b; }
