@@ -1,0 +1,6 @@
+Host: withinfocus.com
+LinksUseHttps: true
+GitHubOwner: withinfocus
+GitHubName: withinfocus.github.io
+GitHubToken: => Config.FromSetting<string>("GITHUB_TOKEN")
+GitHubBranch: main

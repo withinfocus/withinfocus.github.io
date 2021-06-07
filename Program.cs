@@ -12,12 +12,6 @@ namespace withinfocus
             return await Bootstrapper
                 .Factory
                 .CreateWeb(args)
-                .DeployToGitHubPagesBranch(
-                    "withinfocus",
-                    "withinfocus.github.io",
-                    Config.FromSetting<string>("GITHUB_TOKEN"),
-                    "main"
-                )
                 .RunAsync();
         }
     }
