@@ -30,7 +30,7 @@ jobs:
 
       - name: Lint
         id: ml
-        uses: nvuillam/mega-linter/flavors/dotnet@v4.46.0
+        uses: nvuillam/mega-linter/flavors/dotnet@v5.0.4
         env:
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
