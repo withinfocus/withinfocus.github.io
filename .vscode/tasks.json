@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "process",
+            "command": "dotnet",
+            "args": ["build"],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Preview",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["run", "--", "preview"],
+            "isBackground": true,
+            "problemMatcher": {
+                "fileLocation": "autoDetect",
+                "pattern": {
+                    "regexp": "^\\[(.+)\\] *(.+) \\[(.+)\\] (.+)$",
+                    "file": 3,
+                    "severity": 1,
+                    "message": 4
+                },
+                "background": {
+                    "beginsPattern": "files have changed, re-executing",
+                    "endsPattern": "========== Completed =========="
+                }
+            }
+        }
+    ]
+}
