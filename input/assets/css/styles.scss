@@ -3,7 +3,7 @@ $secondary: #cfd2da !default;
 $link: #fdc000 !default;
 
 @mixin body-font {
-  font-family: 'Source Sans Pro', 'Arial', sans-serif;
+  font-family: "Source Sans Pro", "Arial", sans-serif;
 }
 
 body {
@@ -20,7 +20,7 @@ a:visited {
 }
 
 li {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .jumbotron {
