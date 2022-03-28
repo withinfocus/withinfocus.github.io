@@ -366,3 +366,6 @@ MigrationBackup/
 # Statiq output folders
 output/
 cache/
+
+# MegaLinter reports
+report/
