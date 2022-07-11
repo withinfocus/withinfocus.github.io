@@ -368,4 +368,4 @@ output/
 cache/
 
 # MegaLinter reports
-report/
+megalinter-reports/
