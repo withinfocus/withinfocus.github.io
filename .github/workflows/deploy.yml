@@ -16,7 +16,7 @@ jobs:
       - name: .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "6.x"
+          dotnet-version: "7.x"
       - run: dotnet run -- deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
