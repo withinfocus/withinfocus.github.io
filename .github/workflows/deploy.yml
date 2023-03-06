@@ -4,8 +4,10 @@ on:
   push:
     branches: [develop]
 
+permissions: read-all
+
 jobs:
-  build:
+  deploy:
     name: Deploy
     runs-on: ubuntu-latest
 
