@@ -30,6 +30,9 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: .NET
+        uses: actions/setup-dotnet@v4
+
       - name: Lint
         id: ml
         uses: oxsecurity/megalinter/flavors/dotnetweb@v7.8.0
