@@ -21,8 +21,6 @@ jobs:
 
       - name: .NET
         uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: "7.x"
       - name: Run
         run: dotnet run
       - name: Output
