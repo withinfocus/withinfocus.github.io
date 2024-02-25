@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       checks: write
+      contents: write
       pull-requests: write
 
     steps:
@@ -69,5 +70,3 @@ jobs:
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "Apply lint fixes"
-          commit_user_name: withinfocus
-          commit_user_email: matt@withinfocus.com
