@@ -367,5 +367,6 @@ MigrationBackup/
 output/
 cache/
 
-# MegaLinter reports
+# MegaLinter reports and caches
 megalinter-reports/
+CSharpier/.formattingCache
