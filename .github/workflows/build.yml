@@ -24,7 +24,7 @@ jobs:
       - name: Run
         run: dotnet run
       - name: Output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Generated Site
           path: output/
