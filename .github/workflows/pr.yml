@@ -29,25 +29,34 @@ jobs:
       - name: Get PR details
         id: pr-details
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            PR_NUMBER="${{ inputs.pull_request_number }}"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "Fetching details for PR #$PR_NUMBER"
 
-            PR_DATA=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json headRefName,headRepository,author)
+            PR_DATA=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json headRefName,headRepository,author)
             HEAD_REF=$(echo "$PR_DATA" | jq -r '.headRefName')
             AUTHOR_LOGIN=$(echo "$PR_DATA" | jq -r '.author.login')
             HEAD_REPO=$(echo "$PR_DATA" | jq -r '.headRepository.nameWithOwner')
 
-            echo "head_ref=$HEAD_REF" >> $GITHUB_OUTPUT
-            echo "author_login=$AUTHOR_LOGIN" >> $GITHUB_OUTPUT
-            echo "head_repo=$HEAD_REPO" >> $GITHUB_OUTPUT
+            {
+              echo "head_ref=$HEAD_REF"
+              echo "author_login=$AUTHOR_LOGIN"
+              echo "head_repo=$HEAD_REPO"
+            } >> "$GITHUB_OUTPUT"
           else
-            echo "head_ref=${{ github.event.pull_request.head.ref }}" >> $GITHUB_OUTPUT
-            echo "author_login=${{ github.event.pull_request.user.login }}" >> $GITHUB_OUTPUT
-            echo "head_repo=${{ github.event.pull_request.head.repo.full_name }}" >> $GITHUB_OUTPUT
+            {
+              echo "head_ref=$PR_HEAD_REF"
+              echo "author_login=$PR_AUTHOR_LOGIN"
+              echo "head_repo=$PR_HEAD_REPO"
+            } >> "$GITHUB_OUTPUT"
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ inputs.pull_request_number }}
+          REPO: ${{ github.repository }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_AUTHOR_LOGIN: ${{ github.event.pull_request.user.login }}
+          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
 
       - name: Check out repository
         uses: actions/checkout@v6
@@ -127,19 +136,22 @@ jobs:
       - name: Get PR details
         id: pr-details
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            PR_NUMBER="${{ inputs.pull_request_number }}"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "Fetching details for PR #$PR_NUMBER"
 
-            PR_DATA=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json headRefName)
+            PR_DATA=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json headRefName)
             HEAD_REF=$(echo "$PR_DATA" | jq -r '.headRefName')
 
-            echo "head_ref=$HEAD_REF" >> $GITHUB_OUTPUT
+            echo "head_ref=$HEAD_REF" >> "$GITHUB_OUTPUT"
           else
-            echo "head_ref=${{ github.event.pull_request.head.ref }}" >> $GITHUB_OUTPUT
+            echo "head_ref=$PR_HEAD_REF" >> "$GITHUB_OUTPUT"
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ inputs.pull_request_number }}
+          REPO: ${{ github.repository }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
 
       - name: Check out repository
         uses: actions/checkout@v6
