@@ -80,7 +80,7 @@ jobs:
 
       - name: Upload lint reports
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Lint Report
           path: |
@@ -165,7 +165,7 @@ jobs:
         run: dotnet run
 
       - name: Upload output
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Generated Site
           path: output/
