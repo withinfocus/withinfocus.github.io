@@ -5,6 +5,8 @@
     "**/.cspell.json",
     "**/.gitignore",
     "**/.git/**",
+    "**/node_modules/**",
+    "**/package-lock.json",
     ".github/workflows/*.yml"
   ],
   "ignoreRegExpList": [
