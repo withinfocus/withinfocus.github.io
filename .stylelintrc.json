@@ -1,5 +1,6 @@
 {
-    "rules": {
-        "at-rule-no-unknown": null
-    }
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "at-rule-no-unknown": null
+  }
 }

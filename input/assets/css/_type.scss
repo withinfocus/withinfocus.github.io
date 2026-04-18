@@ -1,0 +1,179 @@
+// Typography. Source Serif 4 for display, Source Sans 3 for text.
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-2);
+  color: var(--color-bone);
+}
+
+h1 {
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--fs-2xl);
+}
+
+h3 {
+  font-size: var(--fs-xl);
+}
+
+h4 {
+  font-size: var(--fs-lg);
+}
+
+h5 {
+  font-size: var(--fs-md);
+}
+
+h6 {
+  font-size: var(--fs-base);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  line-height: var(--lh-prose);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration-color: color-mix(in srgb, var(--color-link) 40%, transparent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--motion-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-color: var(--color-teal-deep);
+  text-decoration-thickness: 2px;
+}
+
+a:visited {
+  color: var(--color-link);
+}
+
+strong {
+  color: var(--color-bone);
+  font-weight: 600;
+}
+
+small {
+  font-size: var(--fs-sm);
+  color: var(--color-text-dim);
+}
+
+abbr[title] {
+  border-bottom: 1px dotted var(--color-text-mute);
+  text-decoration: none;
+  cursor: help;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+// Prose block for long-form running text.
+.prose {
+  max-width: var(--measure-prose);
+
+  > * + * {
+    margin-top: var(--space-2);
+  }
+
+  h2 {
+    margin-top: var(--space-5);
+    padding-top: var(--space-3);
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-steel) 30%, transparent);
+  }
+
+  h3 {
+    margin-top: var(--space-4);
+  }
+
+  ul,
+  ol {
+    padding-left: 1.4em;
+
+    li {
+      margin-top: var(--space-1);
+      line-height: var(--lh-prose);
+    }
+  }
+}
+
+// Kicker: small uppercase label above headlines.
+.kicker {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+  margin-bottom: var(--space-2);
+}
+
+// Dek: subtitle below a page H1.
+.dek {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+  color: var(--color-text-dim);
+  max-width: var(--measure-prose);
+  margin: 0 0 var(--space-3);
+}
+
+// Pull-quote.
+.pull-quote {
+  border-left: 3px solid var(--color-yellow);
+  padding: var(--space-1) 0 var(--space-1) var(--space-3);
+  margin: var(--space-4) 0;
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  font-style: italic;
+  line-height: var(--lh-snug);
+  color: var(--color-bone);
+  max-width: var(--measure-prose);
+}
+
+// Figure / caption.
+figure {
+  margin: var(--space-4) 0;
+}
+
+figcaption {
+  font-size: var(--fs-sm);
+  color: var(--color-text-dim);
+  margin-top: var(--space-1);
+  font-style: italic;
+}

@@ -1,0 +1,25 @@
+@{
+    string navKey = Document.GetString("NavKey", "home");
+    string Active(string key) => navKey == key ? " site-nav__link--active" : "";
+}
+<header class="site-nav">
+    <input type="checkbox" id="site-nav-toggle" class="site-nav__toggle-input" aria-hidden="true">
+    <div class="container site-nav__inner">
+        <a href="/" class="site-nav__brand" aria-label="Matt Bishop home">Matt Bishop</a>
+        <label for="site-nav-toggle" class="site-nav__toggle" aria-label="Toggle navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </label>
+        <nav aria-label="Primary">
+            <ul class="site-nav__links">
+                <li><a class="site-nav__link@(Active("career"))" href="/career">Career</a></li>
+                <li><a class="site-nav__link@(Active("work"))" href="/work">Work</a></li>
+                <li><a class="site-nav__link@(Active("life"))" href="/life">Life</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
