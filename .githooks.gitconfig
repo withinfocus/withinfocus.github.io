@@ -1,0 +1,3 @@
+[hook "prettier"]
+    event = pre-commit
+    command = .githooks/pre-commit
