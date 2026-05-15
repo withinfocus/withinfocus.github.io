@@ -1,0 +1,11 @@
+#!/bin/sh
+
+staged=$(git diff --cached --name-only --diff-filter=d)
+
+if [ -z "$staged" ]; then
+    exit 0
+fi
+
+echo "$staged" | xargs prettier --write --ignore-unknown
+
+echo "$staged" | xargs git add
