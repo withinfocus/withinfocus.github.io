@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <title>Iron Compass — Logomark Color</title>
+
+  <g transform="translate(40, 40)">
+    
+    <circle r="28" fill="none" stroke="#3F3F46" stroke-width="3.5"></circle>
+
+    
+    <polygon points="0,-31 -3,-27 3,-27" fill="#CC2936"></polygon>
+
+    
+    <line x1="19.8" y1="-19.8" x2="18" y2="-18" stroke="#A1A1AA" stroke-width="1.5"></line>
+    <line x1="19.8" y1="19.8" x2="18" y2="18" stroke="#A1A1AA" stroke-width="1.5"></line>
+    <line x1="-19.8" y1="19.8" x2="-18" y2="18" stroke="#A1A1AA" stroke-width="1.5"></line>
+    <line x1="-19.8" y1="-19.8" x2="-18" y2="-18" stroke="#A1A1AA" stroke-width="1.5"></line>
+
+    
+    <path d="M 0,26 L -7,5 L 0,8 L 7,5 Z" fill="#71717A"></path>
+    
+    <path d="M 26,0 L 5,7 L 8,0 L 5,-7 Z" fill="#71717A"></path>
+    
+    <path d="M -26,0 L -5,-7 L -8,0 L -5,7 Z" fill="#71717A"></path>
+    
+    <path d="M 0,-26 L 7,-5 L 0,-8 L -7,-5 Z" fill="#FFCC00"></path>
+
+    
+    <circle r="4" fill="#3F3F46"></circle>
+    <circle r="2" fill="#ffffff"></circle>
+  </g>
+</svg>

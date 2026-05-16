@@ -1,29 +1,8 @@
-$primary: #252830 !default;
-$secondary: #cfd2da !default;
-$link: #fdc000 !default;
+// withinfocus.com -- owned styles. No Bootstrap, no Font Awesome.
+// Modular SCSS: tokens, reset, type, layout, components.
 
-@mixin body-font {
-  font-family: "Source Sans Pro", "Arial", sans-serif;
-}
-
-body {
-  @include body-font;
-  background-color: $primary;
-  color: $secondary;
-}
-
-a,
-a:active,
-a:hover,
-a:visited {
-  color: $link;
-}
-
-li {
-  margin-top: 0.5em;
-}
-
-.jumbotron {
-  background-image: url("../pcb.webp");
-  color: lighten($primary, 15%);
-}
+@import "tokens";
+@import "reset";
+@import "type";
+@import "layout";
+@import "components";

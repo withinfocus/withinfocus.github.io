@@ -1,0 +1,106 @@
+// Layout primitives. No utility classes beyond what pages actually use.
+
+.container {
+  width: 100%;
+  max-width: var(--measure-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
+
+.page {
+  padding-block: var(--space-3) var(--space-4);
+}
+
+.section {
+  margin-block: var(--space-5);
+}
+
+.section--tight {
+  margin-block: var(--space-3);
+}
+
+// Two-up and three-up grids.
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+.grid--4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Flex helpers.
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.row--between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stack > * + * {
+  margin-top: var(--space-2);
+}
+
+.stack--lg > * + * {
+  margin-top: var(--space-4);
+}
+
+.measure {
+  max-width: var(--measure-prose);
+}
+
+.measure--narrow {
+  max-width: var(--measure-narrow);
+}
+
+.hide-sm {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .hide-sm {
+    display: initial;
+  }
+}

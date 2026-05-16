@@ -14,5 +14,29 @@
     "/^```[\\s\\S]*?^```/gm",
     "/\\w*\\_\\w*/g"
   ],
-  "words": ["withinfocus"]
+  "words": [
+    "withinfocus",
+    "dasharray",
+    "exfiltration",
+    "favicons",
+    "gatech",
+    "imobile",
+    "Inkscape",
+    "linecap",
+    "linejoin",
+    "Logomark",
+    "msapplication",
+    "mstile",
+    "noopener",
+    "OHMER",
+    "rarr",
+    "SDLC",
+    "Statiq",
+    "stylesheet",
+    "throughline",
+    "TSYS",
+    "nums",
+    "schooler",
+    "XNYTNNK"
+  ]
 }
