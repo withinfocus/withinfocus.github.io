@@ -136,9 +136,12 @@ figcaption { font-size: var(--fs-sm); color: var(--color-text-dim); margin-top: 
 
 .site-nav__toggle:hover { color: var(--color-yellow); }
 
-@media (max-width: 719px) { .site-nav__links { display: none; width: 100%; flex-direction: column; gap: var(--space-2); padding-top: var(--space-2); }
-  .site-nav__toggle-input:checked ~ .site-nav__inner .site-nav__links { display: flex; }
-  .site-nav__inner { flex-wrap: wrap; } }
+@media (max-width: 719px) { .site-nav__inner { flex-wrap: nowrap; }
+  .site-nav__inner nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--color-ink); border-bottom: 1px solid color-mix(in srgb, var(--color-steel) 25%, transparent); display: none; }
+  .site-nav__toggle-input:checked ~ .site-nav__inner nav { display: block; }
+  .site-nav__links { flex-direction: column; gap: 0; padding: var(--space-2) var(--space-3); }
+  .site-nav__link { display: block; padding: var(--space-1) 0; }
+  .site-nav__toggle { margin-left: auto; } }
 
 @media (min-width: 720px) { .site-nav__toggle { display: none; } }
 
